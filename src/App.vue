@@ -1,28 +1,120 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MediaList />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MediaList from './components/MediaList.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    MediaList
   }
 }
 </script>
 
 <style>
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f4f4f4;
+}
+  
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    max-width: 80%; 
+    margin: auto;
+    min-height: initial;
+    position: relative;
+}
+  
+.container > div {
+    padding-bottom: 30px;
+}
+
+h3 {
+    cursor: pointer;
+    display: inline;
+}
+
+p {
+    color: #333;
+}
+
+.more:after {
+    content: "\25BC";
+    font-size: 8px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.less:after {
+    content: "\25B2";
+    font-size: 8px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -10px;
+    font-size: 16px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    border-radius: 5px;
+}
+
+li {
+    border: #eaeaea solid 1px;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: #95effe solid 5px;
+    position: relative;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+
+li.book {
+    border-left: #eb727e solid 5px;
+}
+
+li.streaming {
+    border-left: #a0f2d0 solid 5px;
+}
+
+.byline {
+    font-size: 14px;
+    font-style: italic;
+}
+
+select {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(assets/arrow.png), -webkit-linear-gradient(#fff, #fff 40%, #fff);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #eaeaea;
+    color: #555;
+    font-size: inherit;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+    outline: none;
 }
 </style>
