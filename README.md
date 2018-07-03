@@ -46,3 +46,4 @@ Here is an example of ignoring console.log warning:
     }
   }
 ```
+More info here: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint#configuration
