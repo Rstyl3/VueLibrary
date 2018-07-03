@@ -17,7 +17,7 @@ Before was:
 ```npm
 vue init webpack my-project
 ```
-Note: You can still use this command on the new version  and created your project 
+Note: You can still use this command on the new version  and create your project 
 
 Running local server:
 ```npm
