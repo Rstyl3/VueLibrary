@@ -50,3 +50,55 @@ Here is an example of ignoring console.log warning:
   }
 ```
 More info here: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint#configuration
+
+## Tweaking Webpack Config
+
+Vue CLI provides a very easy and flexible way of tweaking the internal webpack config.
+
+To do this, you have to use the `configureWebpack` option in [vue.config.js](https://cli.vuejs.org/config/#vue-config-js)
+
+```javascript
+// vue.config.js
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      new MyAwesomeWebpackPlugin()
+    ]
+  }
+}
+```
+Just in case you don’t already have the vue.config.js file in your project root. You would have to create it manually.   
+
+You might be wondering: “How do I know what’s already in the internal Webpack config so I know what I need to add?”   
+Well this is where the `vue inspect` command becomes handy. This command outputs all the internal Webpack config to your terminal.   
+To output it to a file, just specify a file name like this:
+
+```console
+vue inspect > output.js
+```
+## Disable Hashed Filenames
+
+While generated static asset filenames contain a hash to ensure the browser picks up changed files this can be disabled. One common scenario for this is when integrating Vue with a backend that dictates a code structure other than what Vue CLI generates, such as with WordPress or Laravel. To disable the hashed filenames, the following can be added to [vue.config.js](https://cli.vuejs.org/config/#vue-config-js):
+
+```javascript
+module.exports = {
+    chainWebpack: (config) => {
+    config.module
+      .rule('images')
+      .use('url-loader')
+      .tap(options => Object.assign({}, options, { name: 'img/[name].[ext]' }));
+  },
+  css: {
+    extract: {
+      filename: '/css/[name].css',
+      chunkFilename: '/css/[name].css',
+    },
+  },
+  configureWebpack: {
+    output: {
+      filename: 'js/[name].js',
+      chunkFilename: 'js/[name].js',
+    },
+  },
+};
+```
