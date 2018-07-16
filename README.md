@@ -102,3 +102,12 @@ module.exports = {
   },
 };
 ```
+
+## Change build path
+
+```javascript
+// vue.config.js
+module.exports = {
+  outputDir: 'wwwroot'
+}
+```
